@@ -23,12 +23,13 @@
     "/demo/"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#^1.4.0",
-    "accounting.js": "~0.4.1"
+    "polymer": "Polymer#^2.6.0",
+    "accounting.js": "~0.4.1",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.1.1"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
     "web-component-tester": "*",
-    "test-fixture": "PolymerElements/test-fixture#~1.0.0"
+    "test-fixture": "PolymerElements/test-fixture#~3.0.0"
   }
 }
