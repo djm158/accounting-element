@@ -19,6 +19,10 @@
   "main": "accounting-element.js",
   "license": "http://polymer.github.io/LICENSE.txt",
   "homepage": "https://github.com/granze/accounting-element/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/djm158/accounting-element"
+  },
   "dependencies": {
     "@polymer/polymer": "^3.0.2",
     "@webcomponents/webcomponentsjs": "^2.0.0",
