@@ -11,7 +11,7 @@ See the [component page](http://Granze.github.io/accounting-element) for more in
 Install using [Bower](http://bower.io):
 
 ```sh
-$ npm install @polymer/accounting-element
+$ npm install accounting-element
 ```
 
 ## License

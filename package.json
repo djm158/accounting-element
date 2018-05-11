@@ -1,5 +1,5 @@
 {
-  "name": "@polymer/accounting-element",
+  "name": "accounting-element",
   "flat": true,
   "version": "1.0.0",
   "description": "Element wrapper for the accounting-js library",
