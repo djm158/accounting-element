@@ -1,5 +1,11 @@
-import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
-import { formatMoney, formatNumber, formatColumn, toFixed, unformat } from 'accounting-js'
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import {
+  formatMoney,
+  formatNumber,
+  formatColumn,
+  toFixed,
+  unformat
+} from "accounting-js";
 /**
 Element wrapper for the [accounting.js](http://openexchangerates.github.io/accounting.js/) library.
 
@@ -27,7 +33,7 @@ Element wrapper for the [accounting.js](http://openexchangerates.github.io/accou
 */
 class AccountingElement extends PolymerElement {
   static get template() {
-    return html `
+    return html`
     <style>
       :host {
         display: inline-block;
@@ -40,14 +46,14 @@ class AccountingElement extends PolymerElement {
   }
 
   static get is() {
-    return 'accounting-element';
+    return "accounting-element";
   }
 
   static get properties() {
     return {
       formatMoney: {
         type: Number,
-        observer: '_formatMoney'
+        observer: "_formatMoney"
       },
       /**
        * @property formatColumn
@@ -55,7 +61,7 @@ class AccountingElement extends PolymerElement {
        */
       formatColumn: {
         type: Array,
-        observer: '_formatColumn'
+        observer: "_formatColumn"
       },
       /**
        * @property formatNumber
@@ -63,7 +69,7 @@ class AccountingElement extends PolymerElement {
        */
       formatNumber: {
         type: Number,
-        observer: '_formatNumber'
+        observer: "_formatNumber"
       },
       /**
        * @property toFixed
@@ -71,7 +77,7 @@ class AccountingElement extends PolymerElement {
        */
       toFixed: {
         type: Number,
-        observer: '_toFixed'
+        observer: "_toFixed"
       },
       /**
        * @property unformat
@@ -81,7 +87,7 @@ class AccountingElement extends PolymerElement {
       unformat: {
         type: String,
         value: null,
-        observer: '_unformat'
+        observer: "_unformat"
       },
       /**
        * @property symbol
@@ -90,7 +96,7 @@ class AccountingElement extends PolymerElement {
        */
       symbol: {
         type: String,
-        value: '$'
+        value: "$"
       },
       /**
        * @property precision
@@ -108,7 +114,7 @@ class AccountingElement extends PolymerElement {
        */
       thousand: {
         type: String,
-        value: ','
+        value: ","
       },
       /**
        * @property decimal
@@ -117,7 +123,7 @@ class AccountingElement extends PolymerElement {
        */
       decimal: {
         type: String,
-        value: '.'
+        value: "."
       },
       /**
        * @property format
@@ -126,9 +132,9 @@ class AccountingElement extends PolymerElement {
        */
       formatOpt: {
         type: String,
-        value: '%s%v'
+        value: "%s%v"
       }
-    }
+    };
   }
 
   /**
@@ -139,9 +145,17 @@ class AccountingElement extends PolymerElement {
   _formatMoney(newValue) {
     if (newValue !== null) {
       if (this.precision === null) {
-        this.precision = 2
+        this.precision = 2;
       }
-      this._render(formatMoney(newValue, this.symbol, this.precision, this.thousand, this.decimal, this.formatOpt));
+      this._render(
+        formatMoney(newValue, {
+          symbol: this.symbol,
+          precision: this.precision,
+          thousand: this.thousand,
+          decimal: this.decimal,
+          format: this.formatOpt
+        })
+      );
     }
   }
   /**
@@ -152,16 +166,26 @@ class AccountingElement extends PolymerElement {
   _formatColumn(newValue) {
     if (newValue !== null) {
       if (this.precision === null) {
-        this.precision = 2
+        this.precision = 2;
       }
 
-      var tableData = formatColumn(newValue, this.symbol, this.precision, this.thousand, this.decimal, this.formatOpt);
-
-      var column = tableData.map(function (row) {
-        return '<tr><td style="white-space: pre; font-family: monospace;">' + row + '</td></tr>';
+      var tableData = formatColumn(newValue, {
+        symbol: this.symbol,
+        precision: this.precision,
+        thousand: this.thousand,
+        decimal: this.decimal,
+        format: this.formatOpt
       });
 
-      this._render('<table>' + column.join('') + '</table>');
+      var column = tableData.map(function(row) {
+        return (
+          '<tr><td style="white-space: pre; font-family: monospace;">' +
+          row +
+          "</td></tr>"
+        );
+      });
+
+      this._render("<table>" + column.join("") + "</table>");
     }
   }
   /**
@@ -172,9 +196,14 @@ class AccountingElement extends PolymerElement {
   _formatNumber(newValue) {
     if (newValue !== null) {
       if (this.precision === null) {
-        this.precision = 0
+        this.precision = 0;
       }
-      this._render(formatNumber(newValue, this.precision));
+      this._render(
+        formatNumber(newValue, {
+          precision: this.precision,
+          thousand: this.thousand
+        })
+      );
     }
   }
   /**
@@ -206,6 +235,4 @@ class AccountingElement extends PolymerElement {
     this.$.content.innerHTML = value;
   }
 }
-window
-  .customElements
-  .define('accounting-element', AccountingElement);
+window.customElements.define("accounting-element", AccountingElement);
