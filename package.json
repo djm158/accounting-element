@@ -1,0 +1,33 @@
+{
+  "name": "@polymer/accounting-element",
+  "flat": true,
+  "version": "1.0.0",
+  "description": "Element wrapper for the accounting-js library",
+  "contributors": [
+    "Maurizio Mangione <granzebru@gmail.com>",
+    "Dan McGrath"
+  ],
+  "keywords": [
+    "web-component",
+    "web-components",
+    "polymer",
+    "numbers",
+    "currency",
+    "money",
+    "formatting"
+  ],
+  "main": "accounting-element.js",
+  "license": "http://polymer.github.io/LICENSE.txt",
+  "homepage": "https://github.com/granze/accounting-element/",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.2",
+    "@webcomponents/webcomponentsjs": "^2.0.0",
+    "accounting-js": "^1.1.1"
+  },
+  "devDependencies": {
+    "@polymer/iron-demo-helpers": "^3.0.0-pre.19",
+    "@webcomponents/webcomponentsjs": "^2.0.0",
+    "@polymer/iron-component-page": "^3.0.0-pre.19",
+    "wct-browser-legacy": "^1.0.0"
+  }
+}
