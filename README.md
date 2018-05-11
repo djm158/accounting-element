@@ -8,7 +8,7 @@ See the [component page](http://Granze.github.io/accounting-element) for more in
 
 ## Installation
 
-Install using [Bower](http://bower.io):
+Install using [npm](https://npmjs.com):
 
 ```sh
 $ npm install accounting-element
